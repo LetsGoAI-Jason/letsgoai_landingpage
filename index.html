@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Let's Go AI - Accelerating Real-World AI Innovation</title>
+    
+    <!-- Meta Tags -->
+    <meta name="description" content="We build AI copilots, apps, and tools that turn proof-of-concept into production-ready value. Next-gen startup studio crafting responsible, high-impact AI tools." />
+    <meta name="author" content="Let's Go AI" />
+    <meta property="og:title" content="Let's Go AI - Accelerating Real-World AI Innovation" />
+    <meta property="og:description" content="We build AI copilots, apps, and tools that turn proof-of-concept into production-ready value." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://letsgoai.co.uk" />
+    <meta property="og:image" content="https://www.letsgoai.co.uk/social-share-image.jpg">
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Let's Go AI - Accelerating Real-World AI Innovation" />
+    <meta name="twitter:description" content="We build AI copilots, apps, and tools that turn proof-of-concept into production-ready value." />
+    <meta name="twitter:image" content="https://www.letsgoai.co.uk/social-share-image.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>" type="image/svg+xml">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+      /* --- Base Styles & Variables --- */
+      :root, [data-theme="dark"] {
+        --background: hsl(220, 13%, 9%);
+        --foreground: hsl(220, 13%, 91%);
+        --card: hsl(220, 13%, 12%);
+        --card-foreground: hsl(220, 13%, 91%);
+        --primary: hsl(170, 100%, 50%);
+        --primary-foreground: hsl(220, 13%, 9%);
+        --secondary: hsl(220, 13%, 16%);
+        --secondary-foreground: hsl(220, 13%, 91%);
+        --muted-foreground: hsl(220, 13%, 60%);
+        --border: hsl(220, 13%, 20%);
+        --radius: 0.75rem;
+
+        --neon-green: #00ff88;
+        --neon-cyan: #00f0ff;
+        --neon-blue: #3b82f6;
+        --neon-purple: #8b5cf6;
+        --neon-pink: #ec4899;
+      }
+      
+      [data-theme="light"] {
+        --background: hsl(220, 13%, 98%);
+        --foreground: hsl(220, 13%, 9%);
+        --card: hsl(0, 0%, 100%);
+        --card-foreground: hsl(220, 13%, 9%);
+        --primary: hsl(170, 100%, 40%);
+        --primary-foreground: hsl(0, 0%, 100%);
+        --secondary: hsl(220, 13%, 94%);
+        --secondary-foreground: hsl(220, 13%, 9%);
+        --muted-foreground: hsl(220, 13%, 40%);
+        --border: hsl(220, 13%, 85%);
+      }
+
+      * { margin: 0; padding: 0; box-sizing: border-box; border-color: var(--border); }
+      html { scroll-behavior: smooth; }
+      body { background-color: var(--background); color: var(--foreground); font-family: 'Inter', sans-serif; overflow-x: hidden; transition: background-color 0.3s ease, color 0.3s ease; }
+
+      /* --- Layout --- */
+      .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+      section { padding: 6rem 0; }
+      
+      /* --- Header --- */
+      .header { padding: 20px 0; position: sticky; top: 0; z-index: 1000; background: radial-gradient(ellipse at top, hsla(220, 13%, 9%, 0.5) 0%, transparent 80%); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); transition: background-color 0.3s ease; }
+      [data-theme="light"] .header { background: radial-gradient(ellipse at top, hsla(220, 13%, 98%, 0.5) 0%, transparent 80%); }
+      .nav-container { display: flex; justify-content: space-between; align-items: center; }
+      .logo { font-size: 1.5rem; font-weight: 600; text-decoration: none; color: var(--foreground); display: flex; align-items: center; gap: 12px; }
+      .logo .logo-icon-svg {
+        width: 32px;
+        height: 32px;
+      }
+      .logo .logo-icon-svg .logo-gradient-stop-1 { stop-color: var(--neon-purple); }
+      .logo .logo-icon-svg .logo-gradient-stop-2 { stop-color: var(--neon-blue); }
+      .logo .logo-icon-svg .logo-gradient-stop-3 { stop-color: var(--neon-cyan); }
+      
+      .theme-toggle { background: var(--secondary); border: 1px solid var(--border); border-radius: 50%; width: 40px; height: 40px; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--secondary-foreground); transition: all 0.2s ease; }
+      .theme-toggle:hover { border-color: var(--primary); color: var(--primary); }
+      .theme-toggle svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+      .icon-sun { display: none; }
+      [data-theme="dark"] .icon-moon { display: none; }
+      [data-theme="dark"] .icon-sun { display: block; }
+
+      /* --- Hero Section --- */
+      #hero {
+        text-align: center;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero-content { position: relative; z-index: 2; animation: fade-in-up 0.8s ease-out; }
+      h1 { font-size: 4.5rem; font-weight: 800; letter-spacing: -0.05em; line-height: 1.1; }
+      .gradient-text {
+        background: linear-gradient(135deg, var(--neon-green), var(--neon-cyan), var(--neon-blue), var(--neon-purple), var(--neon-pink), var(--neon-green));
+        background-size: 400% 400%;
+        animation: smooth-color-flow 20s ease-in-out infinite;
+        background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      }
+      #hero p { font-size: 1.25rem; max-width: 650px; margin: 1.5rem auto 2.5rem; color: var(--muted-foreground); font-weight: 400; }
+
+      /* --- Hero Background & Effects --- */
+      .hero-background-container { position: absolute; inset: 0; z-index: 1; }
+      #hero-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+      /* --- Buttons --- */
+      .cta-button { 
+        display: inline-block; 
+        padding: 14px 28px; 
+        background-color: var(--primary); 
+        color: var(--primary-foreground); 
+        text-decoration: none; 
+        font-weight: 600; 
+        border-radius: 50px; 
+        transition: transform 0.3s ease;
+        position: relative;
+        z-index: 1;
+        border: none;
+      }
+      .cta-button::before {
+        content: '';
+        position: absolute;
+        inset: -2px;
+        z-index: -1;
+        background: linear-gradient(135deg, var(--neon-green), var(--neon-cyan), var(--neon-blue));
+        background-size: 300% 300%;
+        animation: smooth-color-flow 10s ease-in-out infinite;
+        border-radius: 52px; /* 50px button radius + 2px inset */
+        transition: animation-duration 0.3s ease;
+      }
+      .cta-button:hover { transform: translateY(-3px) scale(1.05); }
+      .cta-button:hover::before { animation-duration: 4s; }
+      .cta-button-sm { padding: 10px 22px; font-weight: 500; font-size: 0.95rem; }
+
+      /* --- Content Sections --- */
+      h2 { font-size: 2.8rem; font-weight: 700; text-align: center; margin-bottom: 4rem; }
+      
+      /* --- About Section Panel --- */
+      #about {
+        padding-top: 8rem;
+        padding-bottom: 8rem;
+      }
+      .about-panel {
+        background: transparent;
+        padding: 3rem;
+        border-radius: var(--radius);
+        position: relative;
+        z-index: 1;
+      }
+      .about-panel::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        border-radius: var(--radius);
+        padding: 2px; /* This creates the border thickness */
+        background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple), var(--neon-pink));
+        background-size: 300% 300%;
+        animation: smooth-color-flow 18s ease-in-out infinite;
+        -webkit-mask: 
+           linear-gradient(#fff 0 0) content-box, 
+           linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+                mask-composite: exclude; 
+      }
+      .about-panel h2 {
+        text-align: left;
+        margin-bottom: 1.5rem;
+      }
+      .about-panel p {
+        font-size: 1.15rem; 
+        line-height: 1.7; 
+        text-align: left; 
+        color: var(--muted-foreground);
+      }
+
+      #products { padding-bottom: 8rem; }
+      .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+      
+      .product-card { 
+        background: transparent;
+        border: 1px solid transparent;
+        padding: 2rem; 
+        border-radius: var(--radius); 
+        transition: transform 0.3s ease;
+        position: relative;
+        z-index: 1;
+      }
+      .product-card::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        border-radius: var(--radius);
+        padding: 1px; /* Border thickness */
+        background: linear-gradient(135deg, var(--neon-green), var(--neon-cyan), var(--neon-blue));
+        background-size: 400% 400%;
+        animation: smooth-color-flow 12s ease-in-out infinite;
+        -webkit-mask: 
+           linear-gradient(#fff 0 0) content-box, 
+           linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+                mask-composite: exclude; 
+        opacity: 0.7;
+        transition: opacity 0.3s ease-in-out, animation-duration 0.3s ease;
+      }
+      .product-card:hover { 
+        transform: translateY(-8px);
+      }
+      .product-card:hover::before {
+        opacity: 1;
+        animation-duration: 4s;
+      }
+
+      .product-card h3 { font-size: 1.5rem; font-weight: 600; color: var(--card-foreground); margin-bottom: 1.75rem; position: relative; }
+      .product-card h3::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -0.75rem;
+        height: 2px;
+        width: 100%;
+        background: linear-gradient(90deg, var(--neon-green), var(--neon-cyan), var(--neon-purple), var(--neon-pink));
+        background-size: 400% 100%;
+        animation: smooth-color-flow 10s ease-in-out infinite;
+        border-radius: 1px;
+      }
+      .product-card p { color: var(--muted-foreground); }
+
+      /* --- Footer --- */
+      footer { padding: 4rem 0; text-align: center; border-top: 1px solid var(--border); }
+      footer h3 { font-size: 1.8rem; margin-bottom: 1.5rem; }
+      footer .footer-links { margin: 2rem 0; display: flex; justify-content: center; gap: 1.5rem; }
+      footer a { color: var(--muted-foreground); text-decoration: none; transition: color 0.3s ease; }
+      footer a:not(.cta-button):hover { color: var(--primary); }
+      footer .cta-button:hover { color: var(--primary-foreground); }
+      .copyright { font-size: 0.9rem; color: var(--muted-foreground); }
+      
+      /* --- Keyframe Animations --- */
+      @keyframes smooth-color-flow { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+      @keyframes fade-in-up { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+      
+      /* --- Responsive Design --- */
+      @media (max-width: 768px) { h1 { font-size: 3rem; } h2 { font-size: 2.2rem; } #hero p { font-size: 1.1rem; } section { padding: 4rem 0; } .about-panel { padding: 2rem; } }
+      @media (max-width: 480px) { h1 { font-size: 2.5rem; } .container { padding: 0 1rem; } }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper">
+        <header class="header">
+            <div class="container nav-container">
+                <a href="#" class="logo">
+                    <svg class="logo-icon-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="logoGradientHeader" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop class="logo-gradient-stop-1" offset="0%"/>
+                                <stop class="logo-gradient-stop-2" offset="50%"/>
+                                <stop class="logo-gradient-stop-3" offset="100%"/>
+                            </linearGradient>
+                        </defs>
+                        <!-- NEW SIMPLIFIED LOGO -->
+                        <g stroke="url(#logoGradientHeader)" stroke-width="14" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M75 150 C75 110, 125 110, 125 150 L75 150 Z" />
+                            <path d="M75 110 L100 40 L125 110 Z" />
+                            <path d="M65 150 L45 180 L75 150" />
+                            <path d="M135 150 L155 180 L125 150" />
+                        </g>
+                    </svg>
+                    Let’s Go AI
+                </a>
+                <button class="theme-toggle" id="theme-toggle-button" aria-label="Toggle light and dark mode">
+                    <svg class="icon-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                    <svg class="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                </button>
+            </div>
+        </header>
+
+        <main>
+            <section id="hero">
+                <div class="hero-background-container">
+                    <canvas id="hero-canvas"></canvas>
+                </div>
+                <div class="container hero-content">
+                    <h1 class="gradient-text">Accelerating Real-World AI Innovation</h1>
+                    <p>We build AI copilots, apps, and tools that turn proof-of-concept into production-ready value.</p>
+                    <a href="mailto:partner@letsgoai.co.uk" class="cta-button cta-button-sm">Contact Us</a>
+                </div>
+            </section>
+
+            <section id="about" class="container">
+                <div class="about-panel">
+                    <h2>About Let’s Go AI</h2>
+                    <p>Let’s Go AI is a modern AI startup studio focused on delivering practical, scalable innovation. We bridge the gap between abstract AI capabilities and tangible business outcomes by creating responsibly built products that are intuitive, reliable, and ready for the real world. Our mission is to empower businesses and creators with tools that solve genuine problems and unlock new opportunities.</p>
+                </div>
+            </section>
+
+            <section id="products" class="container">
+                <h2>Our Products</h2>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <h3>MemeMy.biz</h3>
+                        <p>AI-generated, brand-aligned memes for small businesses and creators to spark viral engagement effortlessly.</p>
+                    </div>
+                    <div class="product-card">
+                        <h3>MarkMy.words</h3>
+                        <p>A local-first desktop tool that helps users refine, markup, and review human or AI-generated content with precision.</p>
+                    </div>
+                    <div class="product-card">
+                        <h3>Let’s Go AI</h3>
+                        <p>Our flagship platform for creating copilots and toolkits that drive real-world results across business and creative domains.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="container">
+                <h3>Let's Collaborate</h3>
+                <a href="mailto:partner@letsgoai.co.uk" class="cta-button">Let's Partner</a>
+                <div class="footer-links">
+                     <a href="#">X / Twitter</a>
+                     <a href="#">LinkedIn</a>
+                     <a href="#">Privacy Policy</a>
+                </div>
+                <p class="copyright">&copy; 2025 Let’s Go AI</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const docElement = document.documentElement;
+
+            // --- Theme Toggler ---
+            const themeToggleButton = document.getElementById('theme-toggle-button');
+            const applyTheme = (theme) => {
+                docElement.dataset.theme = theme;
+                localStorage.setItem('theme', theme);
+                window.dispatchEvent(new CustomEvent('theme-changed'));
+            };
+            themeToggleButton.addEventListener('click', () => {
+                const newTheme = docElement.dataset.theme === 'light' ? 'dark' : 'light';
+                applyTheme(newTheme);
+            });
+            applyTheme(localStorage.getItem('theme') || 'dark');
+            
+            // --- Hero Canvas Particle Network ---
+            const canvas = document.getElementById('hero-canvas');
+            const ctx = canvas.getContext('2d');
+            let particles = [];
+            let mouse = { x: null, y: null, radius: 150 };
+            let width, height;
+            let particleColor, lineColor;
+            let hue = 170; // Starting hue for interaction color
+
+            function setupColors() {
+                const theme = docElement.dataset.theme || 'dark';
+                if (theme === 'dark') {
+                    particleColor = 'rgba(0, 255, 136, 0.7)';
+                    lineColor = 'rgba(0, 255, 136, 0.15)';
+                } else {
+                    particleColor = 'rgba(0, 100, 80, 0.7)';
+                    lineColor = 'rgba(0, 100, 80, 0.15)';
+                }
+            }
+            
+            function setupCanvas() {
+                width = canvas.width = window.innerWidth;
+                height = canvas.height = window.innerHeight;
+                particles = [];
+                const particleCount = Math.floor((width * height) / 15000);
+                for (let i = 0; i < particleCount; i++) {
+                    particles.push(new Particle());
+                }
+                setupColors();
+            }
+
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * width;
+                    this.y = Math.random() * height;
+                    this.size = Math.random() * 1.5 + 1;
+                    this.baseX = this.x;
+                    this.baseY = this.y;
+                    this.density = (Math.random() * 30) + 1;
+                    this.vx = (Math.random() - 0.5) * 0.5;
+                    this.vy = (Math.random() - 0.5) * 0.5;
+                    this.isNearMouse = false; // Add property to track mouse proximity
+                }
+                update() {
+                    this.isNearMouse = false;
+                    let directionX = 0;
+                    let directionY = 0;
+
+                    if (mouse.x !== null && mouse.y !== null) {
+                        let dx = mouse.x - this.x;
+                        let dy = mouse.y - this.y;
+                        let distance = Math.sqrt(dx * dx + dy * dy);
+                        
+                        if (distance < mouse.radius) {
+                            this.isNearMouse = true;
+                            let forceDirectionX = dx / distance;
+                            let forceDirectionY = dy / distance;
+                            let maxDistance = mouse.radius;
+                            let force = (maxDistance - distance) / maxDistance;
+                            directionX = -forceDirectionX * force * this.density * 0.6;
+                            directionY = -forceDirectionY * force * this.density * 0.6;
+                        }
+                    }
+                    
+                    this.x += this.vx + directionX;
+                    this.y += this.vy + directionY;
+
+                    // Boundary checks
+                    if (this.x > width + this.size) this.x = -this.size;
+                    if (this.x < -this.size) this.x = width + this.size;
+                    if (this.y > height + this.size) this.y = -this.size;
+                    if (this.y < -this.size) this.y = height + this.size;
+                }
+                draw() {
+                    ctx.fillStyle = particleColor;
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.closePath();
+                    ctx.fill();
+                }
+            }
+
+            function connect() {
+                let opacityValue = 1;
+                for (let a = 0; a < particles.length; a++) {
+                    for (let b = a; b < particles.length; b++) {
+                        let distance = ((particles[a].x - particles[b].x) * (particles[a].x - particles[b].x))
+                                     + ((particles[a].y - particles[b].y) * (particles[a].y - particles[b].y));
+                        if (distance < (width/7) * (height/7)) {
+                            opacityValue = 1 - (distance/20000);
+                            ctx.lineWidth = 1;
+
+                            // If either particle is near the mouse, use the animated HSL color
+                            if (particles[a].isNearMouse || particles[b].isNearMouse) {
+                                ctx.strokeStyle = `hsla(${hue}, 100%, 70%, ${opacityValue})`;
+                            } else {
+                                ctx.strokeStyle = lineColor.replace('0.15', Math.min(opacityValue, 0.15).toString());
+                            }
+                            
+                            ctx.beginPath();
+                            ctx.moveTo(particles[a].x, particles[a].y);
+                            ctx.lineTo(particles[b].x, particles[b].y);
+                            ctx.stroke();
+                        }
+                    }
+                }
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, width, height);
+                for (const particle of particles) {
+                    particle.update();
+                    particle.draw();
+                }
+                connect();
+                hue = (hue + 1) % 360; // Increment hue for color cycling effect
+                requestAnimationFrame(animate);
+            }
+            
+            // --- Event Listeners ---
+            window.addEventListener('mousemove', (e) => {
+                mouse.x = e.x;
+                mouse.y = e.y;
+            });
+            window.addEventListener('mouseout', () => {
+                mouse.x = null;
+                mouse.y = null;
+            });
+
+            window.addEventListener('resize', setupCanvas);
+            window.addEventListener('theme-changed', setupColors);
+            
+            setupCanvas();
+            animate();
+        });
+    </script>
+</body>
+</html>
