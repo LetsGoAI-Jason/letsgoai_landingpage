@@ -423,22 +423,7 @@
             </p>
         </div>
     </footer>
-    <script>
-        // Get the video and image elements from the document
-        const heroVideo = document.getElementById('hero-video');
-        const heroImage = document.getElementById('hero-image');
 
-        // Check if both elements exist to prevent errors
-        if (heroVideo && heroImage) {
-            // Add an event listener that waits for the video to finish playing
-            heroVideo.addEventListener('ended', function() {
-                // When the video ends, fade it out by adding the 'hidden' class
-                heroVideo.classList.add('hidden');
-                
-                // At the same time, fade the image in by removing its 'hidden' class
-                heroImage.classList.remove('hidden');
-            });
-        }
     </script>
 </body>
 </html>

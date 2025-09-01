@@ -203,11 +203,42 @@
 
 <footer style="background-color: transparent; text-align: center; padding: 40px 20px;">
     <div class="container" style="background: none; box-shadow: none; padding: 0; margin: 0 auto;">
-        <p style="color: var(--medium-grey);">&copy; 2024 MarkMy.words Pro. All rights reserved.</p>
+        <p><a href="index.html">Let's Go AI Home</a></p>
+        <p style="color: var(--medium-grey);">&copy; 2025 Let's Go AI Limited. All Rights Reserved.</p>
+        <p style="color: var(--medium-grey);">Registered in England and Wales No. [Your Company Number - pending]</p>
+        <p style="color: var(--medium-grey);">Registered Office: [Your Full Virtual Office Address]</p>
         <p>
             <a href="markmywordspro_privacy.html" style="color: var(--primary-color);">Privacy Policy</a>
         </p>
     </div>
 </footer>
+
+<div id="cookie-consent-banner" style="display: none; position: fixed; bottom: 0; left: 0; right: 0; background: var(--light-grey); color: var(--dark-grey); padding: 1.5rem; text-align: center; z-index: 1001; border-top: 1px solid #e0e0e0;">
+    <p style="margin-bottom: 1rem;">We use cookies to ensure you get the best experience on our website. <a href="markmywordspro_privacy.html" style="color: var(--primary-color);">Learn more</a></p>
+    <button id="cookie-accept" class="cta-button">Accept</button>
+    <button id="cookie-reject" class="cta-button" style="background-color: var(--medium-grey);">Reject</button>
+</div>
+
+<script>
+    // --- Cookie Consent ---
+    const cookieBanner = document.getElementById('cookie-consent-banner');
+    const cookieAccept = document.getElementById('cookie-accept');
+    const cookieReject = document.getElementById('cookie-reject');
+
+    if (!localStorage.getItem('cookie_consent')) {
+        cookieBanner.style.display = 'block';
+    }
+
+    cookieAccept.addEventListener('click', () => {
+        localStorage.setItem('cookie_consent', 'accepted');
+        cookieBanner.style.display = 'none';
+    });
+
+    cookieReject.addEventListener('click', () => {
+        localStorage.setItem('cookie_consent', 'rejected');
+        cookieBanner.style.display = 'none';
+    });
+</script>
+
 </body>
 </html>

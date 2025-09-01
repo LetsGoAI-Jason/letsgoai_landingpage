@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Let's Go AI - Accelerating Real-World AI Innovation</title>
+    <title>Let's Go AI - Building a Portfolio of AI Businesses</title>
     
     <!-- Meta Tags -->
-    <meta name="description" content="We build AI copilots, apps, and tools that turn proof-of-concept into production-ready value. Next-gen startup studio crafting responsible, high-impact AI tools." />
+    <meta name="description" content="An investment company that owns and manages a portfolio of high-growth AI ventures." />
     <meta name="author" content="Let's Go AI" />
-    <meta property="og:title" content="Let's Go AI - Accelerating Real-World AI Innovation" />
-    <meta property="og:description" content="We build AI copilots, apps, and tools that turn proof-of-concept into production-ready value." />
+    <meta property="og:title" content="Let's Go AI - Building a Portfolio of AI Businesses" />
+    <meta property="og:description" content="An investment company that owns and manages a portfolio of high-growth AI ventures." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://letsgoai.co.uk" />
     <meta property="og:image" content="https://www.letsgoai.co.uk/social-share-image.jpg">
@@ -297,8 +297,8 @@
                     <canvas id="hero-canvas"></canvas>
                 </div>
                 <div class="container hero-content">
-                    <h1 class="gradient-text">Accelerating Real-World AI Innovation</h1>
-                    <p>We build AI copilots, apps, and tools that turn proof-of-concept into production-ready value.</p>
+                    <h1 class="gradient-text">Building a Portfolio of AI Businesses</h1>
+                    <p>An investment company that owns and manages a portfolio of high-growth AI ventures.</p>
                     <a href="mailto:partner@letsgoai.co.uk" class="cta-button cta-button-sm">Contact Us</a>
                 </div>
             </section>
@@ -306,43 +306,50 @@
             <section id="about" class="container">
                 <div class="about-panel">
                     <h2>About Let’s Go AI</h2>
-                    <p>Let’s Go AI is a modern AI startup studio focused on delivering practical, scalable innovation. We bridge the gap between abstract AI capabilities and tangible business outcomes by creating responsibly built products that are intuitive, reliable, and ready for the real world. Our mission is to empower businesses and creators with tools that solve genuine problems and unlock new opportunities.</p>
+                    <p>Let's Go AI is an investment company that owns and manages a portfolio of high-growth AI ventures. We provide the strategic ownership and IP framework to allow our subsidiary companies to thrive.</p>
                 </div>
             </section>
 
             <section id="products" class="container">
-                <h2>Our Products</h2>
+                <h2>Our Portfolio</h2>
                 <div class="products-grid">
                     <div class="product-card">
                         <h3>MemeMy.biz</h3>
-                        <p>AI-generated, brand-aligned memes for small businesses and creators to spark viral engagement effortlessly.</p>
+                        <p>AI-generated, brand-aligned memes for small businesses and creators to spark viral engagement effortlessly. MemeMy.biz is a subsidiary brand within the Let's Go AI Ltd portfolio.</p>
+                    </div>
+                    <div class="product-card">
+                        <h3>Let's Go PR</h3>
+                        <p>An innovative AI-powered platform for PR campaigns. Let's Go PR is a subsidiary company within the Let's Go AI Ltd portfolio.</p>
                     </div>
                     <a href="markmywordspro.html" style="text-decoration:none; color:inherit;">
                       <div class="product-card" style="cursor:pointer;">
-                        <h3>MarkMy.words</h3>
-                        <p>A local-first desktop tool that helps users refine, markup, and review human or AI-generated content with precision.</p>
+                        <h3>MarkMy.Words</h3>
+                        <p>A powerful application for the Windows Store. MarkMy.Words is an asset owned and managed by Let's Go AI Ltd.</p>
                       </div>
                     </a>
-                    <div class="product-card">
-                        <h3>Let’s Go AI</h3>
-                        <p>Our flagship platform for creating copilots and toolkits that drive real-world results across business and creative domains.</p>
-                    </div>
                 </div>
             </section>
         </main>
 
         <footer>
             <div class="container">
-                <h3>Let's Collaborate</h3>
-                <a href="mailto:partner@letsgoai.co.uk" class="cta-button">Let's Partner</a>
                 <div class="footer-links">
+                     <a href="index.html">Home</a>
                      <a href="#">X / Twitter</a>
                      <a href="#">LinkedIn</a>
-                     <a href="#">Privacy Policy</a>
+                     <a href="privacy.html">Privacy Policy</a>
                 </div>
-                <p class="copyright">&copy; 2025 Let’s Go AI</p>
+                <p class="copyright">&copy; 2025 Let's Go AI Limited. All Rights Reserved.</p>
+                <p class="copyright">Registered in England and Wales No. [Your Company Number - pending]</p>
+                <p class="copyright">Registered Office: [Your Full Virtual Office Address]</p>
             </div>
         </footer>
+    </div>
+
+    <div id="cookie-consent-banner" style="display: none; position: fixed; bottom: 0; left: 0; right: 0; background: var(--card); color: var(--card-foreground); padding: 1.5rem; text-align: center; z-index: 1001; border-top: 1px solid var(--border);">
+        <p style="margin-bottom: 1rem;">We use cookies to ensure you get the best experience on our website. <a href="markmywordspro_privacy.html" style="color: var(--primary);">Learn more</a></p>
+        <button id="cookie-accept" class="cta-button cta-button-sm">Accept</button>
+        <button id="cookie-reject" class="cta-button cta-button-sm" style="background-color: var(--secondary); color: var(--secondary-foreground);">Reject</button>
     </div>
 
     <script>
@@ -496,6 +503,25 @@
             
             setupCanvas();
             animate();
+
+            // --- Cookie Consent ---
+            const cookieBanner = document.getElementById('cookie-consent-banner');
+            const cookieAccept = document.getElementById('cookie-accept');
+            const cookieReject = document.getElementById('cookie-reject');
+
+            if (!localStorage.getItem('cookie_consent')) {
+                cookieBanner.style.display = 'block';
+            }
+
+            cookieAccept.addEventListener('click', () => {
+                localStorage.setItem('cookie_consent', 'accepted');
+                cookieBanner.style.display = 'none';
+            });
+
+            cookieReject.addEventListener('click', () => {
+                localStorage.setItem('cookie_consent', 'rejected');
+                cookieBanner.style.display = 'none';
+            });
         });
     </script>
 </body>
