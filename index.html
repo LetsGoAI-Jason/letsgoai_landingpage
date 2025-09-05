@@ -243,8 +243,8 @@
       }
       .product-card p { color: var(--muted-foreground); }
 
-      /* --- Footer --- */
-      footer { padding: 4rem 0; text-align: center; border-top: 1px solid var(--border); }
+    /* --- Footer --- */
+    footer { margin-top: 2rem; padding: 4rem 0; text-align: center; border-top: 1px solid var(--border); }
       footer h3 { font-size: 1.8rem; margin-bottom: 1.5rem; }
       footer .footer-links { margin: 2rem 0; display: flex; justify-content: center; gap: 1.5rem; }
       footer a { color: var(--muted-foreground); text-decoration: none; transition: color 0.3s ease; }
@@ -266,22 +266,7 @@
         <header class="header">
             <div class="container nav-container">
                 <a href="#" class="logo">
-                    <svg class="logo-icon-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <linearGradient id="logoGradientHeader" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop class="logo-gradient-stop-1" offset="0%"/>
-                                <stop class="logo-gradient-stop-2" offset="50%"/>
-                                <stop class="logo-gradient-stop-3" offset="100%"/>
-                            </linearGradient>
-                        </defs>
-                        <!-- NEW SIMPLIFIED LOGO -->
-                        <g stroke="url(#logoGradientHeader)" stroke-width="14" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M75 150 C75 110, 125 110, 125 150 L75 150 Z" />
-                            <path d="M75 110 L100 40 L125 110 Z" />
-                            <path d="M65 150 L45 180 L75 150" />
-                            <path d="M135 150 L155 180 L125 150" />
-                        </g>
-                    </svg>
+                    <img src="images/main-website-logo.png" alt="Let's Go AI Logo" style="height: 32px; width: 32px; object-fit: contain; vertical-align: middle; margin-right: 12px;">
                     Let’s Go AI
                 </a>
                 <button class="theme-toggle" id="theme-toggle-button" aria-label="Toggle light and dark mode">

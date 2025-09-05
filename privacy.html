@@ -38,7 +38,23 @@
       * { margin: 0; padding: 0; box-sizing: border-box; border-color: var(--border); }
       html { scroll-behavior: smooth; }
       body { background-color: var(--background); color: var(--foreground); font-family: 'Inter', sans-serif; transition: background-color 0.3s ease, color 0.3s ease; }
-      .container { max-width: 900px; margin: 48px auto; background: var(--card); border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.07); padding: 48px 32px 32px 32px; }
+      /* Match index.html container */
+      .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+
+      /* Glassmorphic sticky header to match index */
+      .header { padding: 20px 0; position: sticky; top: 0; z-index: 1000; background: radial-gradient(ellipse at top, hsla(220, 13%, 9%, 0.5) 0%, transparent 80%); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); transition: background-color 0.3s ease; }
+      [data-theme="light"] .header { background: radial-gradient(ellipse at top, hsla(220, 13%, 98%, 0.5) 0%, transparent 80%); }
+      .nav-container { display: flex; justify-content: space-between; align-items: center; }
+      .logo { font-size: 1.5rem; font-weight: 600; text-decoration: none; color: var(--foreground); display: flex; align-items: center; gap: 12px; }
+      .theme-toggle { background: var(--secondary); border: 1px solid var(--border); border-radius: 50%; width: 40px; height: 40px; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--secondary-foreground); transition: all 0.2s ease; }
+      .theme-toggle:hover { border-color: var(--primary); color: var(--primary); }
+      .theme-toggle svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+      .icon-sun { display: none; }
+      [data-theme="dark"] .icon-moon { display: none; }
+      [data-theme="dark"] .icon-sun { display: block; }
+
+      /* Privacy card (replaces old .container styling) */
+      .policy-card { max-width: 900px; margin: 48px auto; background: var(--card); border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.07); padding: 48px 32px 32px 32px; }
       h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--primary); text-align: center; }
       h2 { font-size: 1.5rem; font-weight: 600; margin-top: 2.5rem; margin-bottom: 1rem; color: var(--foreground); border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
       p, li { font-size: 1.08rem; color: var(--muted-foreground); }
@@ -46,6 +62,7 @@
       li { margin-bottom: 0.7rem; }
       .contact-block { background: var(--secondary); border-radius: 8px; padding: 1rem 1.5rem; margin-top: 2rem; font-size: 1.08rem; }
       .contact-block strong { color: var(--foreground); }
+      /* Footer to match index */
       footer { padding: 4rem 0; text-align: center; border-top: 1px solid var(--border); }
       footer .footer-links { margin: 2rem 0; display: flex; justify-content: center; gap: 1.5rem; }
       footer a { color: var(--muted-foreground); text-decoration: none; transition: color 0.3s ease; }
@@ -54,7 +71,22 @@
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="page-wrapper">
+        <header class="header">
+            <div class="container nav-container">
+                <a href="#" class="logo">
+                    <img src="images/main-website-logo.png" alt="Let's Go AI Logo" style="height: 32px; width: 32px; object-fit: contain; vertical-align: middle; margin-right: 12px;">
+                    Let’s Go AI
+                </a>
+                <button class="theme-toggle" id="theme-toggle-button" aria-label="Toggle light and dark mode">
+                    <svg class="icon-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                    <svg class="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                </button>
+            </div>
+        </header>
+        <main>
+            <div class="container">
+                <div class="policy-card">
         <h1>Privacy Policy</h1>
         <p><strong>Effective Date: 1st September 2025</strong></p>
         <p>
@@ -127,8 +159,9 @@
                 <strong>Email:</strong> <a href="mailto:support@letsgoai.co.uk">support@letsgoai.co.uk</a>
             </p>
         </div>
-    </div>
-
+                                </div>
+                        </div>
+                </main>
     <footer>
         <div class="container">
             <div class="footer-links">
@@ -142,5 +175,25 @@
             <p class="copyright">Registered Office: 71-75 Shelton Street, Covent Garden, London, WC2H 9JQ</p>
         </div>
     </footer>
-</body>
+        </div>
+
+        <script>
+            // Theme toggle to match index.html behavior
+            document.addEventListener('DOMContentLoaded', () => {
+                const docElement = document.documentElement;
+                const themeToggleButton = document.getElementById('theme-toggle-button');
+                const applyTheme = (theme) => {
+                    docElement.dataset.theme = theme;
+                    localStorage.setItem('theme', theme);
+                    window.dispatchEvent(new CustomEvent('theme-changed'));
+                };
+                if (themeToggleButton) {
+                    themeToggleButton.addEventListener('click', () => {
+                        const newTheme = docElement.dataset.theme === 'light' ? 'dark' : 'light';
+                        applyTheme(newTheme);
+                    });
+                }
+                applyTheme(localStorage.getItem('theme') || 'dark');
+            });
+        </script>
 </html>
